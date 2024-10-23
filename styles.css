@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  border: 0;
+  box-sizing: border-box;
   font: inherit;
 }
 
@@ -13,6 +15,20 @@ body {
   font-synthesis: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+span[data-icon] {
+  display: inline-block;
+}
+
+span[data-icon=cart]::before {
+  content: url(images/icon-cart.svg);
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
@@ -20,6 +36,147 @@ body {
 @font-face {
   font-family: "Fraunces";
   src: url(fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+/* @link https://utopia.fyi/type/calculator?c=375,14,1.2,1440,16,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  --step--1: clamp(0.75rem, 0.7042rem + 0.1064vw, 0.8rem);
+  --step-0: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  --step-1: clamp(1.05rem, 0.9796rem + 0.3005vw, 1.25rem);
+  --step-2: clamp(1.26rem, 1.1535rem + 0.4545vw, 1.5625rem);
+  --step-3: clamp(1.512rem, 1.3567rem + 0.6627vw, 1.9531rem);
+  --step-4: clamp(1.8144rem, 1.5936rem + 0.942vw, 2.4414rem);
+  --step-5: clamp(2.1773rem, 1.8694rem + 1.3138vw, 3.0518rem);
+  --step-6: clamp(2.6127rem, 2.1895rem + 1.8058vw, 3.8147rem);
+}
+
+/* @link https://utopia.fyi/space/calculator?c=375,14,1.2,1440,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.162rem + 0.3756vw, 0.5rem);
+  --space-2xs-xs: clamp(0.4375rem, 0.3275rem + 0.4695vw, 0.75rem);
+  --space-xs-s: clamp(0.6875rem, 0.5775rem + 0.4695vw, 1rem);
+  --space-s-m: clamp(0.875rem, 0.6549rem + 0.939vw, 1.5rem);
+  --space-m-l: clamp(1.3125rem, 1.0704rem + 1.0329vw, 2rem);
+  --space-l-xl: clamp(1.75rem, 1.3099rem + 1.8779vw, 3rem);
+  --space-xl-2xl: clamp(2.625rem, 2.1408rem + 2.0657vw, 4rem);
+  --space-2xl-3xl: clamp(3.5rem, 2.6197rem + 3.7559vw, 6rem);
+}
+
+body {
+  background-color: hsl(30, 38%, 92%);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: var(--step-0);
+  line-height: 150%;
+}
+
+main {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-m-l);
+}
+
+.button {
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: var(--space-2xs-xs);
+  padding: 1em 2em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: start;
+  gap: var(--space-2xs-xs);
+}
+.button[data-color-scheme=primary] {
+  background-color: hsl(158, 36%, 37%);
+  color: hsl(0, 0%, 100%);
+}
+.button[data-color-scheme=primary]:hover {
+  background-color: hsl(158, 36%, 22%);
+}
+
+.card {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(228, 12%, 48%);
+  border-radius: var(--space-s-m);
+  overflow: hidden;
+}
+.card .card--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-m-l);
+  padding: var(--space-m-l);
+}
+
+.card:has(.card--image) {
+  display: grid;
+  grid-auto-flow: row;
+  align-items: stretch;
+}
+@media screen and (min-width: 30.01rem) {
+  .card:has(.card--image) {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card:has(.card--image) .card--image {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .card:has(.card--image) .card--image img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+
+.product-category {
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: var(--step--1);
+}
+.product-category:has(+ .product-name) {
+  margin-block-end: var(--space-2xs-xs);
+}
+
+.product-name {
+  font-family: Fraunces, serif;
+  font-weight: 700;
+  font-size: var(--step-4);
+  line-height: 105%;
+  text-wrap: balance;
+  font-size: var(--step-4);
+  color: hsl(212, 21%, 14%);
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s-m);
+}
+.product-price strong {
+  color: hsl(158, 36%, 37%);
+  font-family: Fraunces, serif;
+  font-weight: 700;
+  font-size: var(--step-4);
+  line-height: 105%;
+  text-wrap: balance;
+}
+
+.limit-width {
+  max-width: 42rem;
+}
+
+.attribution {
+  padding: 0.5rem;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(158, 36%, 37%);
+}
+.attribution a:hover {
+  color: hsl(212, 21%, 14%);
 }
 
 /*# sourceMappingURL=styles.css.map */

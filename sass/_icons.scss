@@ -1,0 +1,9 @@
+$cart: url(images/icon-cart.svg);
+
+span[data-icon] {
+  display: inline-block;
+}
+
+span[data-icon="cart"]::before {
+  content: $cart;
+}

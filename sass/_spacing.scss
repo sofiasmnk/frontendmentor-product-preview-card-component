@@ -1,4 +1,19 @@
-$spacing-xs: 0.5rem;
-$spacing-sm: 1rem;
-$spacing-base: 1.5rem;
-$spacing-lg: 2rem;
+// spacing scale from utopia.fyi
+/* @link https://utopia.fyi/space/calculator?c=375,14,1.2,1440,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.162rem + 0.3756vw, 0.5rem);
+  --space-2xs-xs: clamp(0.4375rem, 0.3275rem + 0.4695vw, 0.75rem);
+  --space-xs-s: clamp(0.6875rem, 0.5775rem + 0.4695vw, 1rem);
+  --space-s-m: clamp(0.875rem, 0.6549rem + 0.939vw, 1.5rem);
+  --space-m-l: clamp(1.3125rem, 1.0704rem + 1.0329vw, 2rem);
+  --space-l-xl: clamp(1.75rem, 1.3099rem + 1.8779vw, 3rem);
+  --space-xl-2xl: clamp(2.625rem, 2.1408rem + 2.0657vw, 4rem);
+  --space-2xl-3xl: clamp(3.5rem, 2.6197rem + 3.7559vw, 6rem);
+}
+
+$xs: var(--space-2xs-xs);
+$sm: var(--space-s-m);
+$base: var(--space-m-l);
+$lg: var(--space-l-xl);

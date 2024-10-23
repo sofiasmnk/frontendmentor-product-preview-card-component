@@ -1,6 +1,22 @@
-$clr-brand-primary: hsl(158, 36%, 37%);
-$clr-brand-secondary: hsl(30, 38%, 92%);
+@use 'sass:color';
 
-$clr-neutral-light: hsl(0, 0%, 100%);
-$clr-neutral-medium: hsl(228, 12%, 48%);
-$clr-neutral-dark: hsl(212, 21%, 14%);
+$brand-primary: hsl(158, 36%, 37%);
+$brand-secondary: hsl(30, 38%, 92%);
+
+$neutral-light: hsl(0, 0%, 100%);
+$neutral-medium: hsl(228, 12%, 48%);
+$neutral-dark: hsl(212, 21%, 14%);
+
+@mixin scheme-primary {
+  background-color: $brand-primary;
+  color: $neutral-light;
+}
+
+@mixin scheme-primary-hover {
+  background-color: color.adjust($brand-primary, $lightness: -15%);
+}
+
+@mixin scheme-base {
+  background-color: $neutral-light;
+  color: $neutral-medium;
+}

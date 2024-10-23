@@ -1,5 +1,126 @@
 @use 'reset';
-@use 'colors';
-@use 'typography';
-@use 'spacing';
+@use 'icons';
+@use 'colors' as clr;
+@use 'typography' as font;
+@use 'spacing' as sp;
 
+// general styles
+
+body {
+  background-color: clr.$brand-secondary;
+  @include font.body-text;
+}
+
+main {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: sp.$base;
+}
+
+// button component
+
+.button {
+  cursor: pointer;
+  font-weight: font.$fw-bold;
+
+  border-radius: sp.$xs;
+  padding: 1em 2em;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: start;
+  gap: sp.$xs;
+
+  &[data-color-scheme="primary"] {
+    @include clr.scheme-primary;
+    &:hover { @include clr.scheme-primary-hover; }
+  }
+}
+
+// card component
+
+.card {
+  @include clr.scheme-base;
+  border-radius: sp.$sm;
+  overflow: hidden;
+
+  .card--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: sp.$base;
+    padding: sp.$base;
+  }
+}
+
+// if card has an image, give it 2-column layout on desktop
+.card:has(.card--image) {
+  display: grid;
+  grid-auto-flow: row;
+  align-items: stretch;
+
+  @media screen and (min-width: 30.01rem) {
+    grid-template-columns: 1fr 1fr;
+
+    // make card image only be as tall as the card content when in 2-columns
+    .card--image {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      img {
+        height: 100%;
+        width: 100%;
+        position: absolute; }
+    }
+  }
+}
+
+// style product info
+
+.product-category {
+  @include font.uppercase-text;
+  font-size: font.$fs-sm;
+  
+  // add space between category and product name if they're next to each other
+  &:has(+ .product-name) {
+    margin-block-end: sp.$xs;
+  }
+}
+
+.product-name {
+  @include font.display-text;
+  font-size: font.$fs-xl;
+  color: clr.$neutral-dark;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: sp.$sm;
+
+  strong {
+    color: clr.$brand-primary;
+    @include font.display-text;
+  }
+}
+
+// utilities
+
+.limit-width {
+  max-width: 42rem;
+}
+
+// attribution styles
+
+.attribution {
+  padding: 0.5rem;
+  text-align: center;
+  a {
+    color: clr.$brand-primary;
+  }
+  a:hover {
+    color: clr.$neutral-dark;
+  }
+}

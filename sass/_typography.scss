@@ -10,6 +10,20 @@
   src: url(fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
 }
 
+// font scale from utopia.fyi
+/* @link https://utopia.fyi/type/calculator?c=375,14,1.2,1440,16,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  // altered step -1 from generated scale so that it doesn't go under 12px
+  --step--1: clamp(0.75rem, 0.7042rem + 0.1064vw, 0.8rem);
+  --step-0: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  --step-1: clamp(1.05rem, 0.9796rem + 0.3005vw, 1.25rem);
+  --step-2: clamp(1.26rem, 1.1535rem + 0.4545vw, 1.5625rem);
+  --step-3: clamp(1.512rem, 1.3567rem + 0.6627vw, 1.9531rem);
+  --step-4: clamp(1.8144rem, 1.5936rem + 0.942vw, 2.4414rem);
+  --step-5: clamp(2.1773rem, 1.8694rem + 1.3138vw, 3.0518rem);
+  --step-6: clamp(2.6127rem, 2.1895rem + 1.8058vw, 3.8147rem);
+}
+
 // define variables/tokens
 
 $ff-body: Montserrat, sans-serif;
@@ -18,15 +32,11 @@ $ff-display: Fraunces, serif;
 $fw-regular: 500;
 $fw-bold: 700;
 
-// font scale generated with utopia.fyi
-// "minWidth": 375, "minFontSize": 14, "minTypeScale": 1.125
-// "maxWidth": 1440, "maxFontSize": 16, "maxTypeScale": 1.25,
-// "positiveSteps": 3, "negativeSteps": 1
-$fs-sm: clamp(0.7778rem, 0.77rem + 0.0334vw, 0.8rem);
-$fs-base: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
-$fs-md: clamp(0.9844rem, 0.8908rem + 0.3991vw, 1.25rem);
-$fs-lg: clamp(1.1074rem, 0.9472rem + 0.6837vw, 1.5625rem);
-$fs-xl: clamp(1.2458rem, 0.9968rem + 1.0626vw, 1.9531rem);
+$fs-sm: var(--step--1);
+$fs-base: var(--step-0);
+$fs-md: var(--step-1);
+$fs-lg: var(--step-3);
+$fs-xl: var(--step-4);
 
 // text style mixins
 
@@ -41,10 +51,11 @@ $fs-xl: clamp(1.2458rem, 0.9968rem + 1.0626vw, 1.9531rem);
   font-family: $ff-display;
   font-weight: $fw-bold;
   font-size: $fs-xl;
-  line-height: 125%;
+  line-height: 105%;
+  text-wrap: balance;
 }
 
 @mixin uppercase-text {
   text-transform: uppercase;
-  letter-spacing: 0.125rem;
+  letter-spacing: 0.25rem;
 }

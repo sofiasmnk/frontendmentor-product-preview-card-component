@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  border: 0;
+  box-sizing: border-box;
   font: inherit;
 }
 
@@ -11,4 +13,10 @@ html {
 body {
   height: 100%;
   font-synthesis: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
 }

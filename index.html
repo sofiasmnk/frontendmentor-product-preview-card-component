@@ -10,16 +10,16 @@
   </head>
   <body>
     <main>
-      <section class="card">
+      <section class="card limit-width">
         <picture class="card--image">
-          <source media="(max-width: 599px)" srcset="images/image-product-mobile.jpg">
-          <source media="(min-width: 600px)" srcset="images/image-product-desktop.jpg">
-          <img src="images/image-product-mobile.jpg" alt="Chris standing up holding his daughter Elva">
+          <source media="(max-width: 30rem)" srcset="images/image-product-mobile.jpg">
+          <source media="(min-width: 30.01rem)" srcset="images/image-product-desktop.jpg">
+          <img src="images/image-product-mobile.jpg" alt="Square, light yellow bottle of perfume.">
         </picture>
         <div class="card--content">
           <hgroup>
-            <p>Perfume</p>
-            <h1>Gabrielle Essence Eau De Parfum</h1>
+            <p class="product-category">Perfume</p>
+            <h1 class="product-name">Gabrielle Essence Eau De Parfum</h1>
           </hgroup>
           <p>
             A floral, solar and voluptuous interpretation composed by Olivier Polge, 
@@ -29,8 +29,9 @@
             <strong>$149.99</strong>
             <s>$169.99</s>
           </div>
-          <button class="button-primary" data-button-icon="cart">
-            <span>Add to Cart</span>
+          <button class="button" data-color-scheme="primary">
+            <span data-icon="cart"></span>
+            Add to Cart
           </button>
         </div>
       </section>
