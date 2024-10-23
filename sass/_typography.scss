@@ -1,0 +1,50 @@
+// load font files
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url(fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+
+// define variables/tokens
+
+$ff-body: Montserrat, sans-serif;
+$ff-display: Fraunces, serif;
+
+$fw-regular: 500;
+$fw-bold: 700;
+
+// font scale generated with utopia.fyi
+// "minWidth": 375, "minFontSize": 14, "minTypeScale": 1.125
+// "maxWidth": 1440, "maxFontSize": 16, "maxTypeScale": 1.25,
+// "positiveSteps": 3, "negativeSteps": 1
+$fs-sm: clamp(0.7778rem, 0.77rem + 0.0334vw, 0.8rem);
+$fs-base: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+$fs-md: clamp(0.9844rem, 0.8908rem + 0.3991vw, 1.25rem);
+$fs-lg: clamp(1.1074rem, 0.9472rem + 0.6837vw, 1.5625rem);
+$fs-xl: clamp(1.2458rem, 0.9968rem + 1.0626vw, 1.9531rem);
+
+// text style mixins
+
+@mixin body-text {
+  font-family: $ff-body;
+  font-weight: $fw-regular;
+  font-size: $fs-base;
+  line-height: 150%;
+}
+
+@mixin display-text {
+  font-family: $ff-display;
+  font-weight: $fw-bold;
+  font-size: $fs-xl;
+  line-height: 125%;
+}
+
+@mixin uppercase-text {
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+}
